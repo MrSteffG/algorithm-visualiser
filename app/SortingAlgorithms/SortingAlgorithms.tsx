@@ -5,6 +5,14 @@ import React, { useState } from "react";
 const SortingAlgorithms = () => {
   const [array, setArray] = useState([34, 64, 23, 98, 24, 1, 45, 78]);
 
+  const generateArray = () => {
+    const newArr = [];
+    for (let i = 0; i < 40; i++) {
+      newArr.push(Math.floor(Math.random() * 100) + 1);
+    }
+    setArray(newArr);
+  };
+
   const ArrayBars = () => {
     return array.map((n: number) => {
       return (
@@ -20,7 +28,7 @@ const SortingAlgorithms = () => {
   };
 
   const sort = () => {
-    let newArr = [...array];
+    const newArr = [...array];
     for (let i = 0; i < array.length; i++) {
       newArr[i] = i;
       setArray(newArr);
@@ -35,6 +43,12 @@ const SortingAlgorithms = () => {
         onClick={sort}
       >
         Sort
+      </button>
+      <button
+        className="bg-sky-600 p-3 text-xl rounded-md px-5 font-bold text-white hover:scale-105"
+        onClick={generateArray}
+      >
+        Generate Arr
       </button>
       <div className="flex min-h-[50vh] w-2/3 border-2">
         <div className="flex gap-1 items-end">
