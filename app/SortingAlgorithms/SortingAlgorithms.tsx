@@ -32,16 +32,32 @@ const SortingAlgorithms = () => {
   };
 
   const bubbleSort = async () => {
-    let newArr = [...array];
+    const newArr = [...array];
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array.length; j++) {
         if (newArr[j] > newArr[j + 1]) {
-          await delay(200);
+          await delay(100);
           const temp = newArr[j];
           newArr[j] = newArr[j + 1];
           newArr[j + 1] = temp;
           setArray(newArr);
         }
+      }
+    }
+  };
+
+  const insertionSort = async () => {
+    const newArr = [...array];
+    for (let i = 1; i < newArr.length; i++) {
+      const currentValue = newArr[i];
+      let j = i - 1;
+      while (j > -1 && currentValue < newArr[j]) {
+        newArr[j + 1] = newArr[j];
+
+        j--;
+        newArr[j + 1] = currentValue;
+        await delay(50);
+        setArray(newArr);
       }
     }
   };
@@ -55,6 +71,12 @@ const SortingAlgorithms = () => {
         onClick={bubbleSort}
       >
         Bubble Sort
+      </button>
+      <button
+        className="bg-sky-600 p-3 text-xl rounded-md px-5 font-bold text-white hover:scale-105"
+        onClick={insertionSort}
+      >
+        Insertion Sort
       </button>
       <button
         className="bg-sky-600 p-3 text-xl rounded-md px-5 font-bold text-white hover:scale-105"
